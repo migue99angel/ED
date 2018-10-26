@@ -3,38 +3,35 @@
 @brief fichero de implementación del TDA diccionario
 */
 #include "Diccionario.h"
-#include <fstream>
 #include <string.h>
+#include "Vector_Dinamico.h"
 #include <iostream>
 
 using namespace std;
 
-class Diccionario{
-public:
 	Diccionario::Diccionario(){
-		diccionario=NULL;
+		diccionario=0;
 	}
 
-	Diccionario::Diccionario(vector_dinamico terminos){
+	Diccionario::Diccionario(Vector_Dinamico<Termino> terminos){
 		this->diccionario=terminos;
 	}
 
 	Diccionario::Diccionario(const Diccionario& diccionario){
-		this=diccionario;
-	}friend ostream& operator << (ostream &os, const Diccionario $p);
-friend istream& operator >> (istream &is, const Diccionario $p);
+		this->diccionario=diccionario.getDiccionario();
+	}
 
-	vector_dinamico<string*> getSignificados(Termino buscar){
+	Vector_Dinamico<string> Diccionario::getSignificados(string buscar){
 		int indice=buscarTermino(buscar);
-		return diccionario[indice].getDefiniciones();
+		return this->diccionario[indice].getDefiniciones();
 	}
 
 	void Diccionario::addTermino(Termino nuevo){
 		Termino aux;
 		this->diccionario.resize(diccionario.size()+1);
-		for(int i=0; i<diccionario.getNumTerminos();i++ ){
-			if(strcmp(diccionario[i].getPalabra(),nuevo.getPalabra() > 0)){
-				for(int j=diccionario.getNumDefiniciones()-1;j>i;j--){
+		for(int i=0; i<diccionario.size();i++ ){
+			if(strcmp(diccionario[i].getPalabra().c_str(),nuevo.getPalabra().c_str()) > 0){
+				for(int j=diccionario[i].getNumDefiniciones()-1;j>i;j--){
 					this->diccionario[j]=this->diccionario[j+1];
 				}
 			this->diccionario[i]=nuevo;
@@ -44,64 +41,70 @@ friend istream& operator >> (istream &is, const Diccionario $p);
 
 	void Diccionario::delTermino(Termino eliminar){
 		Termino aux;
-		int indice=buscarTermino(eliminar);
-		diccionario[indice]=NULL;
+		int indice=buscarTermino(eliminar.getPalabra());
 		for(int i=indice;i<diccionario.size();i++){
 			diccionario[i+1]=diccionario[i];
 		}
 		diccionario.resize(diccionario.size()-1);
 	}
 
-	int Diccionario::buscarTermino(Termino buscar){
-		int indice=0;
+	int Diccionario::buscarTermino(string buscar){
+		int indice=-1;
 		bool encontrado=false;
 		for (int i=0;i<diccionario.size() && !encontrado ;i++){
-			if(cmp(this->diccionario[i].palabra,buscar.palabra)==0){
+			if(strcmp(this->diccionario[i].getPalabra().c_str(),buscar.c_str())==0){
 				indice=i;
 				encontrado=true;
 			}
 		}
 		return indice;
 	}
+	bool Diccionario::contenido(string palabra){
+		bool contenido=false;
+		int entero=this->buscarTermino(palabra);
+		if(entero != -1)
+			contenido=true;
+		return contenido;
+	}
 
-	Diccionario filtroIntervalo (char a, char b){
+	Diccionario Diccionario::filtroIntervalo (char a, char b){
 		int comienzo,final;
 		Diccionario filtrado;
 		bool encontrado=false;
-		for(int i=0; i < diccionario.size && !encontrado ;i++){
-			if(strcmp(Diccionario[i].getPalabra[0],a)==0){
+		for(int i=0; i < this->getNumTerminos() && !encontrado ;i++){
+			if(diccionario[i].getPalabra()[0]==a){
 				comienzo=i;
 				encontrado=true;
 			}
 		}
 		encontrado=false;
-		for(int i=0; i < diccionario.size && !encontrado ;i++){
-			if(strcmp(Diccionario[i].getPalabra[0],a)==0){
+		for(int i=comienzo; i < this->getNumTerminos() && !encontrado ;i++){
+			if(diccionario[i].getPalabra()[0]==b){
 				final=i;
 				encontrado=true;
 			}
 		}
 		for(int i=comienzo;i<final;i++){
 			for(int j=0;j<(final-comienzo);j++){
-				aux[j]=diccionario[i];
+				filtrado.addTermino(diccionario[i]);
 			}
 		}
-		return aux;
+		return filtrado;
 	}
 	
-	Diccionario filtroPalabraClave (string clave){
-		int pos,contador=0;
+	Diccionario Diccionario::filtroPalabraClave (string clave){
+		unsigned pos,contador=0;
 		Diccionario aux;
 		bool incluido=false;
-		for(int i=0;i<this->diccionario.getNumDefiniciones();i++){
+		for(int i=0;i<this->getNumTerminos();i++){
 			for (int j=0;j<this->diccionario[i].getNumDefiniciones();i++){
 				pos=diccionario[i].getDefinicion(j).find(clave);
-				if( n != string::npos && !incluido ){
-					aux[contador]=this->diccionario[i];
+				if( pos != string::npos && !incluido ){
+					aux.diccionario[contador]=this->diccionario[i];
 					incluido=true;
 				}
-				if(n != string::npos){
-					aux[contador].setDefinicion(this->diccionario[i].getDefinicion(j));
+				if(pos != string::npos){
+					aux.diccionario[contador].setDefinicion(this->diccionario[i].getDefinicion(j));
 				}
 
 			}
@@ -111,38 +114,38 @@ friend istream& operator >> (istream &is, const Diccionario $p);
 		return aux;
 	}	
 
-	void recuento(int& num_defs, int& max_defs, float& media){
+	void Diccionario::recuento(int& num_defs, int& max_defs, float& media){
 		num_defs=max_defs=media=0;
 		for(int i=0;i<diccionario.size();i++){
 			num_defs += diccionario[i].getNumDefiniciones();
-			if(diccionario[i].getNumDefiniciones() > mayor)
-				mayor=diccionario[i].getNumDefiniciones();
+			if(diccionario[i].getNumDefiniciones() > max_defs)
+				max_defs=diccionario[i].getNumDefiniciones();
 		}
-		media=num_defs/diccionario.getNumTerminos();		
+		media=(num_defs/this->getNumTerminos());		
 	}	
 
-	Diccionario& operator=(const Diccionario& original){
+	Diccionario& Diccionario::operator=(const Diccionario& original){
 		if(this != &original){
-			this->diccionario=original;
+			this->diccionario=original.diccionario;
 		}
 		return *this;
 	}
-};
 
 
-ostream& operator << (ostream &os, const Diccionario $p){
+
+ostream& operator << (ostream &os, const Diccionario &p){
 	for(int i=0;i <p.getNumTerminos(); i++){
 		for(int j=0;j<p.getTermino(i).getNumDefiniciones();j++){
-			os << p.getTermino(i); Valdria solo con esto?
+			os << p.getTermino(i); 
 		}
 	}
 	return os;
 }
 
-istream& operator >> (istream &is, Diccionario $p){
+istream& operator >> (istream &is, Diccionario &p){
 	Termino aux;
 	while(!is.eof()){
-		is >> aux
+		is >> aux;
 		p.addTermino(aux);
 	}
 	return is;

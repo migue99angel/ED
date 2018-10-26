@@ -1,5 +1,6 @@
 #include <cassert>
-#include "Vector_Dinamico.h"
+
+//#include "Vector_Dinamico.h"
 
 template <class T>
 Vector_Dinamico<T>::Vector_Dinamico(int n){

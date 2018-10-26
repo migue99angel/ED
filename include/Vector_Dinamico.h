@@ -1,8 +1,6 @@
 #ifndef VectorDinamico_h
 #define VectorDinamico_h
 
-#include "Vector_Dinamico.tpp"
-
 template <class T>
 class Vector_Dinamico{
 private:
@@ -22,6 +20,6 @@ public:
   Vector_Dinamico <T>& operator=(const Vector_Dinamico<T> & original);
 };
 
-
+#include "Vector_Dinamico.tpp"
 
 #endif // VectorDinamico_h

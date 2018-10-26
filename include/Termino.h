@@ -4,12 +4,15 @@
 */
 #ifndef termino_h
 #define termino_h
-#include "vector_dinamico.h"
+#include <string>
+#include "Vector_Dinamico.h"
+
+using namespace std;
 
 class Termino{
 private:
 	string palabra;
-	vector_dinamico<string> definiciones; //¿?
+	Vector_Dinamico<string> definiciones; 
 
 public:
 	/*
@@ -21,7 +24,7 @@ public:
 	@param palabra
 	@param definiciones
 	*/	
- 	Termino(string palabra, vector_dinamico v);
+ 	Termino(string palabra, Vector_Dinamico<string> v);
 	/*
 	@brief constructor copia
 	@param termino a copiar
@@ -31,23 +34,23 @@ public:
 	@brief consultor de palabra
 	@return palabra
 	*/
-	inline string getPalabra() const {return palabra};
+	inline string getPalabra() const {return palabra;}
 	/*
 	@brief consultor de definiciones
 	@return definiciones
 	*/
-	inline vector_dinamico getDefiniciones() const {return definiciones};
+	inline Vector_Dinamico<string> getDefiniciones() const {return definiciones;}
 	/*
 	@brief consultor de una definicion en concreto
 	@param numero de la definicion
 	@return definicion
 	*/
-	inline vector_dinamico getDefinicion(i) const {return definiciones[i]};
+	inline string getDefinicion(int i) const {return definiciones[i];}
 	/*
 	@brief consultor de definiciones
 	@return numero de definiciones
 	*/
-	inline vector_dinamico getNumDefiniciones() const {return definiciones.size()};
+	inline int getNumDefiniciones() const {return definiciones.size();}
 	/*
 	@brief operador de modificacion de palabra
 	@param palabra
@@ -57,7 +60,7 @@ public:
 	@brief asigna definiciones
 	@param definiciones
 	*/
-	void setDefiniciones (vector_dinamico definiciones);
+	void setDefiniciones (Vector_Dinamico<string> definiciones);
 	/*
 	@brief añade una definicion a definiciones
 	@param definicion
@@ -68,12 +71,12 @@ public:
 	@param Termino a asignar
 	*/	
 	Termino& operator=(const Termino& original);
-};
 	/*
 	@brief Sobrecarga de operadores de entrada y salida
 	*/
+	friend ostream& operator << (ostream &os, const Termino &p);
+	friend istream& operator >> (istream &is,  Termino &p);
 
-friend ostream& operator << (ostream &os, const Termino $p);
-friend istream& operator >> (istream &is, const Termino $p);
+};
 
 #endif

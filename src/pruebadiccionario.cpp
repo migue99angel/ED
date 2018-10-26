@@ -1,5 +1,8 @@
 #include "Diccionario.h"
+#include "Termino.h"
+#include "Vector_Dinamico.h"
 #include <fstream>
+#include <string.h>
 #include <iostream>
 
 using namespace std;
@@ -19,14 +22,32 @@ int main(int argc, char * argv[]){
    
    Diccionario mi_diccionario;
    f>>mi_diccionario; //Cargamos en memoria el diccionario
-   
-   /* Exhibir aqui la funcionalidad programada para el TDA Diccionario / TDA Termino  
-    Algunas sugerencias: 
-    - Obtener las definiciones asociadas a una palabra   
-    - Obtener el (sub)diccionario de términos comprendidos en [caracter_inicial, caracter_final]
-    - Obtener el (sub)diccionario de términos asociados a una palabra clave. Ejemplo: el diccionario de terminos asociados a "color"   
-    - Obtener el numero total de definiciones, el maximo de definiciones asociadas a una unica palabra y el promedio de definiciones por palabra
-    - Cualquier otra funcionalidad que considereis de interes 
-   */
+   //Obtener las definiciones asociadas a una palabra  
+   string definiciones_obtener = "ball";
+   cout<<"Las definiciones de la palabra "<<definiciones_obtener<<endl;
+   for(int i=0;i<mi_diccionario.getSignificados(definiciones_obtener).size();i++){
+      cout<<mi_diccionario.getSignificados(definiciones_obtener)[i]<<endl;
+   }
+  //Obtener el (sub)diccionario de términos comprendidos en [caracter_inicial, caracter_final]
+   char inicial ='c',final = 'm';
+   cout<<"El (sub)diccionario de termino comprendido entre c y m es: "<<endl;
+   cout<<mi_diccionario.filtroIntervalo(inicial,final)<<endl;
+  //Obtener el (sub)diccionario de términos asociados a una palabra clave. Ejemplo: el diccionario de terminos asociados a "color"
+   string clave ="farm";
+   cout<<"El (sub)diccionario aociado a la palabra clave, "<<clave<<"es: "<<endl;
+   cout<<mi_diccionario.filtroPalabraClave(clave)<<endl;
+   //Obtener el numero total de definiciones, el maximo de definiciones asociadas a una unica palabra y el promedio de definiciones por palabra
+   int num_defs, max_defs;
+   float media;
+   mi_diccionario.recuento(num_defs,max_defs,media);
+   cout<<"El numero total de definiciones es: "<<num_defs<<endl;
+   cout<<"El maximo de definiciones asociadas a un termino es: "<<max_defs<<endl;
+   cout<<"El promedio de definiciones por palabra es: "<<media<<endl;
+   //el siguiente método nos dice si una palabra se encuentra en el diccionario
+   string buscar="horn";
+   if(mi_diccionario.contenido(buscar))
+    cout<<"La palabra "<<buscar<<" se encuentra en el diccionario"<<endl;
+  else
+    cout<<"La palabra "<<buscar<<" NO se encuentra en el diccionario"<<endl;
 
 }
