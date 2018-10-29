@@ -66,11 +66,6 @@ public:
 	@param definicion
 	*/
 	void setDefinicion(string definicion);
-        /*
-	@brief añade una definicion a definiciones
-	@param definicion
-	*/
-        void addDefinicion(string definicion);
 	/*
 	@brief sobrecarga del operador igual
 	@param Termino a asignar

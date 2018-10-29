@@ -27,23 +27,22 @@ using namespace std;
 	}
 
 	void Diccionario::addTermino(Termino nuevo){
-                bool encontrado=false;
-                int pos;
+        bool encontrado=false;
+        int pos;
 		this->diccionario.resize(diccionario.size()+1);
-               // this->diccionario[diccionario.size()-1]=nuevo;
 		for(int i=0; i<diccionario.size() && !encontrado ;i++ ){
 			if(nuevo.getPalabra() < diccionario[i].getPalabra()){
                             pos=i;
                             encontrado = true;
 			}
 		}
-                if(!encontrado)
-                    pos=this->getNumTerminos()-1;
+        if(!encontrado)
+            pos=this->getNumTerminos()-1;
                 
-                for(int i=this->getNumTerminos()-1;i>pos;i--)
-                    diccionario[i]=diccionario[i-1];
+        for(int i=this->getNumTerminos()-1;i>pos;i--)
+            diccionario[i]=diccionario[i-1];
 		
-                diccionario[pos] = nuevo;
+        diccionario[pos] = nuevo;
 	}
 
 	void Diccionario::delTermino(Termino eliminar){
@@ -77,7 +76,7 @@ using namespace std;
 	}
 
 	Diccionario Diccionario::filtroIntervalo (char a, char b){
-                string comparacion;
+        string comparacion;
 		Diccionario filtrado;
                 for(int i=0; i<this->diccionario.size() ; i++){
                     comparacion = this->diccionario[i].getPalabra();
@@ -96,16 +95,16 @@ using namespace std;
                     Termino t;
                     bool incluido=true;
                     
-			for (int j=0;j<this->diccionario[i].getNumDefiniciones();j++){         
-                            
+			for (int j=0;j<this->diccionario[i].getNumDefiniciones();j++){                        
 				if( diccionario[i].getDefinicion(j).find(clave) != string::npos ){
-                                        t.setPalabra(this->diccionario[i].getPalabra());
+                    t.setPalabra(this->diccionario[i].getPalabra());
 					incluido=false;
-                                        t.addDefinicion(diccionario[i].getDefinicion(j));
+                    t.setDefinicion(diccionario[i].getDefinicion(j));
 				}                                
-                        }
+            }
+
 			if(!incluido){
-                            aux.addTermino(t);
+               aux.addTermino(t);
 			}			
 		}
 		return aux;
@@ -153,11 +152,11 @@ istream& operator >> (istream &is, Diccionario &p){
                 taux.setPalabra(aux);
                 anterior = aux;
                 getline(is, aux, '\n');
-                taux.addDefinicion(aux);
+                taux.setDefinicion(aux);
             }
             else{
                 getline(is, aux, '\n');
-                taux.addDefinicion(aux);
+                taux.setDefinicion(aux);
             }
 
             if(!is.eof())

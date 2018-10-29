@@ -35,13 +35,9 @@ using namespace std;
 	}
 
 	void Termino::setDefinicion(string definicion){
-               addDefinicion(definicion);
+        this->definiciones.resize(definiciones.size()+1);
+        this->definiciones[definiciones.size()-1]=definicion;
 	}
-        void Termino::addDefinicion(string definicion){
-            this->definiciones.resize(definiciones.size()+1);
-            this->definiciones[definiciones.size()-1]=definicion;
-            
-        }
 
 	Termino& Termino::operator =(const Termino& original){
 		if(this != &original){
