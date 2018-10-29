@@ -7,11 +7,6 @@ CXX = g++
 CPPFLAGS = -Wall -g  -I$(INC) -c
 
 
-all: $(BIN)/pruebadiccionario
-
-# **** Generación de documentación ******
-documentacion:
-	doxygen doc/doxys/Doxyfile
 
 
 # **** Compilación de módulos ****
@@ -29,12 +24,20 @@ $(OBJ)/Diccionario.o : $(SRC)/Diccionario.cpp
 
 $(OBJ)/pruebadiccionario.o : $(SRC)/pruebadiccionario.cpp
 	$(CXX) $(CPPFLAGS)  -o $(OBJ)/pruebadiccionario.o $(SRC)/pruebadiccionario.cpp -I$(INC)
+
+
+# **** Generación de documentación ******
+documentacion:
+	doxygen doc/doxys/Doxyfile
+	
+
+all: $(BIN)/pruebadiccionario	
 # **** Ejecutar ****
 exec:
 	./$(BIN)/pruebadiccionario ./datos/diccionario.txt
 # **** Limpieza ****
 clean :
-	-rm $(OBJ)/* $(BIN)/* $(SRC)/~ $(INC)/~ ./*~
+	
 
 mrproper : clean
 	-rm doc/html/*

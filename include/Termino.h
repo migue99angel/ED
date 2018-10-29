@@ -34,7 +34,7 @@ public:
 	@brief consultor de palabra
 	@return palabra
 	*/
-	inline string getPalabra() const {return palabra;}
+	inline string getPalabra() const {return this->palabra;}
 	/*
 	@brief consultor de definiciones
 	@return definiciones
@@ -66,16 +66,17 @@ public:
 	@param definicion
 	*/
 	void setDefinicion(string definicion);
+        /*
+	@brief añade una definicion a definiciones
+	@param definicion
+	*/
+        void addDefinicion(string definicion);
 	/*
 	@brief sobrecarga del operador igual
 	@param Termino a asignar
 	*/	
 	Termino& operator=(const Termino& original);
-	/*
-	@brief Sobrecarga de operadores de entrada y salida
-	*/
-	friend ostream& operator << (ostream &os, const Termino &p);
-	friend istream& operator >> (istream &is,  Termino &p);
+
 
 };
 

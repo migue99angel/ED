@@ -27,16 +27,23 @@ using namespace std;
 	}
 
 	void Diccionario::addTermino(Termino nuevo){
-		Termino aux;
+                bool encontrado=false;
+                int pos;
 		this->diccionario.resize(diccionario.size()+1);
-		for(int i=0; i<diccionario.size();i++ ){
-			if(strcmp(diccionario[i].getPalabra().c_str(),nuevo.getPalabra().c_str()) > 0){
-				for(int j=diccionario[i].getNumDefiniciones()-1;j>i;j--){
-					this->diccionario[j]=this->diccionario[j+1];
-				}
-			this->diccionario[i]=nuevo;
+               // this->diccionario[diccionario.size()-1]=nuevo;
+		for(int i=0; i<diccionario.size() && !encontrado ;i++ ){
+			if(nuevo.getPalabra() < diccionario[i].getPalabra()){
+                            pos=i;
+                            encontrado = true;
 			}
 		}
+                if(!encontrado)
+                    pos=this->getNumTerminos()-1;
+                
+                for(int i=this->getNumTerminos()-1;i>pos;i--)
+                    diccionario[i]=diccionario[i-1];
+		
+                diccionario[pos] = nuevo;
 	}
 
 	void Diccionario::delTermino(Termino eliminar){
@@ -51,8 +58,10 @@ using namespace std;
 	int Diccionario::buscarTermino(string buscar){
 		int indice=-1;
 		bool encontrado=false;
-		for (int i=0;i<diccionario.size() && !encontrado ;i++){
-			if(strcmp(this->diccionario[i].getPalabra().c_str(),buscar.c_str())==0){
+		for (int i=0;i<this->getNumTerminos() && !encontrado ;i++){
+                    Termino aux = this->diccionario[i];
+                    string palabra=this->diccionario[i].getPalabra();
+			if((this->diccionario[i].getPalabra().compare(buscar) )==0){
 				indice=i;
 				encontrado=true;
 			}
@@ -68,48 +77,36 @@ using namespace std;
 	}
 
 	Diccionario Diccionario::filtroIntervalo (char a, char b){
-		int comienzo,final;
+                string comparacion;
 		Diccionario filtrado;
-		bool encontrado=false;
-		for(int i=0; i < this->getNumTerminos() && !encontrado ;i++){
-			if(diccionario[i].getPalabra()[0]==a){
-				comienzo=i;
-				encontrado=true;
-			}
-		}
-		encontrado=false;
-		for(int i=comienzo; i < this->getNumTerminos() && !encontrado ;i++){
-			if(diccionario[i].getPalabra()[0]==b){
-				final=i;
-				encontrado=true;
-			}
-		}
-		for(int i=comienzo;i<final;i++){
-			for(int j=0;j<(final-comienzo);j++){
-				filtrado.addTermino(diccionario[i]);
-			}
-		}
-		return filtrado;
-	}
+                for(int i=0; i<this->diccionario.size() ; i++){
+                    comparacion = this->diccionario[i].getPalabra();
+
+                    if( comparacion[0]>=a && comparacion[0]<=b )
+                        filtrado.addTermino(this->diccionario[i]);
+    }
+
+                return filtrado;
+ }
 	
 	Diccionario Diccionario::filtroPalabraClave (string clave){
-		unsigned pos,contador=0;
 		Diccionario aux;
-		bool incluido=false;
+		
 		for(int i=0;i<this->getNumTerminos();i++){
-			for (int j=0;j<this->diccionario[i].getNumDefiniciones();i++){
-				pos=diccionario[i].getDefinicion(j).find(clave);
-				if( pos != string::npos && !incluido ){
-					aux.diccionario[contador]=this->diccionario[i];
-					incluido=true;
-				}
-				if(pos != string::npos){
-					aux.diccionario[contador].setDefinicion(this->diccionario[i].getDefinicion(j));
-				}
-
-			}
-		contador++;
-		incluido=false;
+                    Termino t;
+                    bool incluido=true;
+                    
+			for (int j=0;j<this->diccionario[i].getNumDefiniciones();j++){         
+                            
+				if( diccionario[i].getDefinicion(j).find(clave) != string::npos ){
+                                        t.setPalabra(this->diccionario[i].getPalabra());
+					incluido=false;
+                                        t.addDefinicion(diccionario[i].getDefinicion(j));
+				}                                
+                        }
+			if(!incluido){
+                            aux.addTermino(t);
+			}			
 		}
 		return aux;
 	}	
@@ -121,7 +118,7 @@ using namespace std;
 			if(diccionario[i].getNumDefiniciones() > max_defs)
 				max_defs=diccionario[i].getNumDefiniciones();
 		}
-		media=(num_defs/this->getNumTerminos());		
+		media=(1.0*num_defs/this->getNumTerminos());		
 	}	
 
 	Diccionario& Diccionario::operator=(const Diccionario& original){
@@ -136,17 +133,42 @@ using namespace std;
 ostream& operator << (ostream &os, const Diccionario &p){
 	for(int i=0;i <p.getNumTerminos(); i++){
 		for(int j=0;j<p.getTermino(i).getNumDefiniciones();j++){
-			os << p.getTermino(i); 
+			os << p.diccionario[i].getPalabra()<<";";
+                        os << p.diccionario[i].getDefinicion(j)<<endl;
 		}
 	}
 	return os;
 }
 
 istream& operator >> (istream &is, Diccionario &p){
-	Termino aux;
-	while(!is.eof()){
-		is >> aux;
-		p.addTermino(aux);
-	}
-	return is;
+    string aux;
+    string anterior = "\0";
+    
+    
+    getline(is, aux, ';');
+    do{
+        Termino taux;
+        do{
+            if(anterior == "\0" || aux != anterior){
+                taux.setPalabra(aux);
+                anterior = aux;
+                getline(is, aux, '\n');
+                taux.addDefinicion(aux);
+            }
+            else{
+                getline(is, aux, '\n');
+                taux.addDefinicion(aux);
+            }
+
+            if(!is.eof())
+                getline(is, aux, ';');
+        }while(aux == anterior);
+
+        p.addTermino( taux );
+        
+    }while(!is.eof());
+
+    return is;
 }
+
+

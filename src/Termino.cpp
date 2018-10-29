@@ -35,9 +35,13 @@ using namespace std;
 	}
 
 	void Termino::setDefinicion(string definicion){
-		this->definiciones.resize(this->definiciones.size()+1);
-		this->definiciones[this->definiciones.size()]=definicion;
+               addDefinicion(definicion);
 	}
+        void Termino::addDefinicion(string definicion){
+            this->definiciones.resize(definiciones.size()+1);
+            this->definiciones[definiciones.size()-1]=definicion;
+            
+        }
 
 	Termino& Termino::operator =(const Termino& original){
 		if(this != &original){
@@ -45,27 +49,4 @@ using namespace std;
 		this->definiciones = original.getDefiniciones();
 		}
 		return *this;
-	}
-
-	ostream& operator << (ostream &os, const Termino &p){
-		for(int i=0;i<p.getDefiniciones().size();i++){
-			os<<p.getPalabra()<<";";
-			os<<p.getDefinicion(i)<<endl;
-		}
-		    return os;	
-	}
-
-	istream& operator >> (istream &is, Termino &p){
-		string palabra_aux, definicion_aux;
-		getline(is,palabra_aux,';');
-		getline(is,definicion_aux);
-		p.setPalabra(palabra_aux);
-		p.setDefinicion(definicion_aux);
-		getline(is,palabra_aux,';');
-		while(strcmp(p.getPalabra().c_str(),palabra_aux.c_str())==0){
-			getline(is,definicion_aux);
-			p.setDefinicion(definicion_aux);
-			getline(is,palabra_aux,';');
-		}
-		return is;
 	}
