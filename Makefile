@@ -37,7 +37,7 @@ exec:
 	./$(BIN)/pruebadiccionario ./datos/diccionario.txt
 # **** Limpieza ****
 clean :
-	
+	-rm $(OBJ)/* $(SRC)/*~ $(INC)/*~ ./*~
 
 mrproper : clean
 	-rm doc/html/*
