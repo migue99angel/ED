@@ -70,32 +70,6 @@ public:
 	int size(){
 		return cola1.size();
 	}
-	bool operator < ( pila<T> comparar){
-		bool menor=true;
-		if(this->cola1.size()==comparar.size()){
-			//Comparamos la primera cola de cada objeto cola que estemos comparando
-			while(!comparar.empty()){
-				comparar.cola2.push(comparar.cola1.front());
-				this->cola2.push(this->cola1.front());
-				if(this->cola1.front() > comparar.cola1.front())
-					menor=false;
-				comparar.cola1.pop();
-				this->cola1.pop();
-			}
-			//Dejamos las colas en su estado inicial
-			while(!comparar.cola2.empty){
-				comparar.cola1.push(comparar.cola2.front());
-				comparar.cola2.pop();
-				this->cola1.push(this->cola2.front());
-				this->cola2.pop();
-			}
-		}
-		else
-			menor=false;
-		return menor;
-
-
-	}
 
 	bool operator ==( pila<T> comparar){
 		bool iguales=true;
