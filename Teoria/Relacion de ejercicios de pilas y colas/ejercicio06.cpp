@@ -1,7 +1,9 @@
 /*
 6. Implementa un TDA cola usando como representación dos pilas.
 */
-
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 //g++ -o ejercicio6 ejercicio06.cpp
 
 

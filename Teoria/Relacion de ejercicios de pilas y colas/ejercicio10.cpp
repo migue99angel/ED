@@ -3,7 +3,9 @@
 izquierda, borrar elemento y que se implementa usando dos pilas. Implementa ese tipo de
 dato con las operaciones comentadas.
 */
-
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 //g++ -o ejercicio10 ejercicio10.cpp
 
 #include <iostream>

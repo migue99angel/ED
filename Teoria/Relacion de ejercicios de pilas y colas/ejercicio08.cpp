@@ -7,6 +7,9 @@ dos operandos seguidos por el operador. Hay un espacio entre cada dos elementos.
 		donde a = 12, b = 4, c = 7, d = 5, e = 2
 		a b + c d * + e * donde a = 2, b = 6, c = 3, d = 5, e = 9
 */
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 //g++ -o ejercicio8 ejercicio08.cpp
 //No uso un vector de punteros a variables porque si no no compila
 #include <iostream>

@@ -2,6 +2,9 @@
 7. Implementa el TDA cola usando dos pilas. ¿Qué orden de eficiencia tienen las operaciones push y
 pop?
 */
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 //g++ -o ejercicio7 ejercicio07.cpp
 
 

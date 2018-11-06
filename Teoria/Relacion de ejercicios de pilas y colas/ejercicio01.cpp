@@ -1,6 +1,9 @@
 /*1. Construye una función a la que se se le pase una pila P de tipo T y dos elementos x,y de tipo T y que
 modifique la pila de forma que todas las veces que aparezca x se substituya por y (quedando la pila en
 el mismo estado en el que estaba anteriormente). Para este ejercicio no se podrán utilizar iteradores.*/
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 
 #include <iostream>
 #include <stack>

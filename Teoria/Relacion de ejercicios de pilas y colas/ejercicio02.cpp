@@ -2,6 +2,9 @@
 2. Implementa un función para determinar si una expresión contenida en un string tiene una configura-
 ción de paréntesis correcta. Debe tener un orden lineal.
 */
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 /*g++ -o ejercicio2 ejercicio02.cpp*/
 
 #include <iostream>

@@ -2,10 +2,12 @@
 5. Usando una pila y una cola, implementa una función que compruebe si un string es un palı́ndromo.
 */
 
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
+
 //g++ -o ejercicio5 ejercicio5.cpp
 
-//Si pongo como prueba una frase que sea un palindromo como lo es "a cavar a caravaca"
-//no devuelve true
 #include <iostream>
 #include <stack>
 #include <queue>

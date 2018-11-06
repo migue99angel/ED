@@ -1,5 +1,8 @@
 /*3. Implementa una función insertar(P, pos, x) que inserte un elemento en una pila P en la posición pos.
 La pila debe quedar como estaba antes de insertar el elemento (salvo por el nuevo elemento)*/
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 
 //g++ -o ejercicio3 ejercicio3.cpp 
 

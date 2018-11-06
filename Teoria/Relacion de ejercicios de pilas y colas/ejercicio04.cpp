@@ -2,6 +2,9 @@
 4. Implementa una función insertar(Q, pos, x) que inserte un elemento en una cola Q en la posición pos.
 La cola debe quedar como estaba antes de insertar el elemento (salvo por el nuevo elemento)
 */
+/*
+	@author Miguel Ángel Posadas Arráez
+*/
 // g++ -o ejercicio4 ejercicio4.cpp
 
 /*Puesto que se pide una funcion igual al ejercicio anterior he copiado y pegado la función
