@@ -41,39 +41,40 @@ T evaluar(string expresion, pair<char, T> variables[], int num_variables){
 			}
 
 			if(expresion[i]=='-'){
-				T x=pila.top();
-				pila.pop();
 				T y=pila.top();
 				pila.pop();
-				pila.push(x-y);
+				T x=pila.top();
+				pila.pop();
+				pila.push(y-x);
 			}
 
 			if(expresion[i]=='*'){
-				T x=pila.top();
-				pila.pop();
 				T y=pila.top();
+				pila.pop();
+				T x=pila.top();
 				pila.pop();
 				pila.push(x*y);	
 			}
 
 			if(expresion[i]=='/'){
-				T x=pila.top();
-				pila.pop();
 				T y=pila.top();
 				pila.pop();
-				pila.push(y/x);	
+				T x=pila.top();
+				pila.pop();
+				pila.push(x/y);	
 			}
 			if(expresion[i]=='^'){
-				T x=pila.top();
-				pila.pop();
 				T y=pila.top();
 				pila.pop();
-				pila.push(pow(y,x));	
+				T x=pila.top();
+				pila.pop();
+				pila.push(pow(x,y));	
 			}	
 
 		}
 
 		else 
+			if(expresion[i]!=' ')
 			pila.push(sustituir(expresion[i],variables,num_variables));
 	}
 	return pila.top();		
@@ -82,10 +83,10 @@ T evaluar(string expresion, pair<char, T> variables[], int num_variables){
 
 int main(){
 	int num_variables=5,num_variables2=5,num_variables3=5;
-	pair<char, float> variables[num_variables],variables2[num_variables2], variables3[num_variables3];
-	string expresion="ab^c*d/e+";
-	string expresion2="abcde+*+-";
-	string expresion3="ab+cd*+e*";
+	pair<char, int> variables[num_variables],variables2[num_variables2], variables3[num_variables3];
+	string expresion="a b ^ c * d / e +";
+	string expresion2="a b c d e + * + -";
+	string expresion3="a b + c d * + e * ";
 //Asigno las variables de la primera expresion
 
 	variables[0].first='a';

@@ -31,7 +31,7 @@ bool parentesis_correctos(string expresion){
 
 int main(){
 string prueba="(Esto es una prueba del ejercicio 2)";
-string prueba2 = "()Esto no es correcto)(";
+string prueba2 = "((Esto no es correcto)";
 string prueba3="((Esto es correcto))";
 bool correctos=parentesis_correctos(prueba);
 bool correctos2=parentesis_correctos(prueba2);

@@ -4,6 +4,7 @@ el mismo estado en el que estaba anteriormente). Para este ejercicio no se podr�
 /*
 	@author Miguel Ángel Posadas Arráez
 */
+/*g++ -o ejercicio1 ejercicio01.cpp*/
 
 #include <iostream>
 #include <stack>

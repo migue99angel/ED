@@ -19,8 +19,10 @@ bool palindromo(string cad){
 	bool palindromo=true;
 
 	for(int i=0;i<cad.size();i++){
+		if(cad[i]!=' '){
 		pila.push(cad[i]);
 		cola.push(cad[i]);
+		}
 	}
 	while(!pila.empty()){
 		if(pila.top()!= cola.front())
