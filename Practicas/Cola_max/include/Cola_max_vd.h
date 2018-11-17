@@ -15,6 +15,7 @@ class Cola{
 private:
 	vector<T> elementos;
 	vector<T> mayor;
+        T anterior;
 	/*
 	@brief Devuelve el vector de elementos
 	@return el elemento
@@ -25,6 +26,7 @@ private:
 	@return mayor
 	*/
 	inline vector<T> getMayores()const {return this->mayor;}
+
 
 public:
 	/*
@@ -63,7 +65,10 @@ public:
 	@return true si esta vacía y false en caso contrario
 	*/
 	bool vacia();
-
+        /*
+         @brief Actualiza el vector de mayores
+        */
+        void actualizaMayores();
 };
 #include "Cola_max_vd.cpp"
 #endif
