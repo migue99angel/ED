@@ -1,0 +1,27 @@
+var classCola =
+[
+    [ "Cola", "classCola.html#aea3a971c7c522618f4dc972e8b4ff153", null ],
+    [ "Cola", "classCola.html#acbaa857e11255779a17a4bed0a87a59b", null ],
+    [ "Cola", "classCola.html#a23731a39410b9d173017d55ab628be81", null ],
+    [ "Cola", "classCola.html#aea3a971c7c522618f4dc972e8b4ff153", null ],
+    [ "Cola", "classCola.html#a23731a39410b9d173017d55ab628be81", null ],
+    [ "frente", "classCola.html#a53207f13c786e00a572590619117c515", null ],
+    [ "frente", "classCola.html#a125323973ff1a498fc568a63489a09bc", null ],
+    [ "getElementos", "classCola.html#a0b5287be6a608b90f0cfd25a8f386565", null ],
+    [ "getMayores", "classCola.html#a1956b7d61f482a3b51733dc2b89c6257", null ],
+    [ "maximo", "classCola.html#a9450835492f902ef8af04db83f719d57", null ],
+    [ "maximo", "classCola.html#af0a6392f96f4b9d99856b74edf1655f2", null ],
+    [ "num_elementos", "classCola.html#a26e5b0df5411aa23114d790f0a8c023b", null ],
+    [ "num_elementos", "classCola.html#ab38c037ac1181f662a4237d67a797473", null ],
+    [ "poner", "classCola.html#a60dd68ae3a9526fa55ad5586709f1df6", null ],
+    [ "poner", "classCola.html#aa28f047b224a8a904123ec0cecdd3080", null ],
+    [ "quitar", "classCola.html#a320766ddc7020424052c99e5c82a105d", null ],
+    [ "quitar", "classCola.html#a320766ddc7020424052c99e5c82a105d", null ],
+    [ "vacia", "classCola.html#aed15fbe4c4b1fcdf41d928ba7a7c56b2", null ],
+    [ "vacia", "classCola.html#aed15fbe4c4b1fcdf41d928ba7a7c56b2", null ],
+    [ "elementos", "classCola.html#a9577d03e2c4989f722bacae0279503fa", null ],
+    [ "elementos", "classCola.html#ae477e2981e0534bf15d692a6d07f7370", null ],
+    [ "mayor", "classCola.html#a624bcb116cda6f4cb46b7c52b148db07", null ],
+    [ "mayores", "classCola.html#af069d9bd9d6d8f5b9957479e77c67d9d", null ],
+    [ "pos", "classCola.html#afb6bcfe9a62dea52c3c4c8ef6b918417", null ]
+];

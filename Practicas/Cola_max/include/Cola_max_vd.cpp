@@ -7,20 +7,22 @@
 
 #include<iostream>
 #include<vector>
-#include "Cola_max_vd.h"
+#include "Cola_max.h"
 
 using namespace std;
 
 template <class T>
 Cola<T>::Cola(){
-
+	this->elementos=vector<T>();
+	this->mayor=vector<T>();
+    this->pos=0;
 }
 
 template <class T>
 Cola<T>::Cola(const Cola &c){
 	this->elementos=c.getElementos();
 	this->mayor=c.getMayores();
-        this->anterior=c.anterior;
+    this->pos=c.pos;
 }
 template <class T>
 T Cola<T>::maximo() const {
@@ -33,13 +35,28 @@ T Cola<T>::frente() const{
 
 template <class T>
 void Cola<T>::poner(T elemento){
-    if(elementos.size()>=1){
-        if(elementos[elementos.size()-1]>elemento)
-            anterior=elementos[elementos.size()-1];
+    T max;
+    this->elementos.push_back(elemento);  
+    if(mayor.empty()){
+        max =(int) 0;
     }
-	this->elementos.push_back(elemento);
-        this->mayor.push_back(elemento);
-        actualizaMayores();
+    
+    else{
+        max = (T) maximo();
+    } 
+    if(elemento < max){
+        mayor.push_back(elemento);
+        pos = mayor.size() - 1;
+    }
+    else{
+
+        for(unsigned i=mayor.size(); i>pos; i--){
+            mayor.pop_back();
+        }        
+        for(unsigned i=mayor.size(); i<elementos.size(); i++){
+            mayor.push_back(elemento);
+        }
+    }
 }
 
 
@@ -66,28 +83,4 @@ template <class T>
 bool Cola<T>::vacia(){
 	return elementos.empty();
 }
-
-template <class T>
-void Cola<T>::actualizaMayores(){
-    bool encontrado=false;
-    unsigned tope=0;
-    if(this->mayor.size()>=1){
-    for(unsigned j= elementos.size();j>0 && !encontrado;j--){
-        if(elementos[j]==anterior){
-            tope=j;
-            encontrado=true;
-        }
-    }
-    int i=mayor.size();
-    while(i!=0){
-        
-        if( mayor[i]>mayor[i-1] ){
-            mayor[i-1]=mayor[i];
-            }
-        i--;
-        }
-    cout<<"hola";
-    }
-}
-
 #endif

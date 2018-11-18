@@ -1,51 +1,82 @@
+#ifndef pila_max_h
+#define pila_max_h
+
 /*
-@file Cola_max_vd.h
-@author Miguel Ángel Posadas Arráez
+* @file Cola_max_pila.h
+* @brief Fichero de cabecera de Cola_max_pila
+* @author Miguel Ángel Posadas Arráez
 */
-#include<iostream>
-#include<stack>
+
+#include <iostream>
+#include <stack>
+ 
 
 using namespace std;
-template <class T>
+
+
+
+template <class T> 
 class Cola{
 private:
+	/*
+	* TDA Cola_max_pila
+	*/
+	stack<T> elementos;
+	stack<T> mayores;
+        int pos;
 
 public:
 	/*
-	@brief Constructor sin parámetros
+	* @brief Constructor por defecto
 	*/
 	Cola();
+
 	/*
-	@brief Constructor de copia
+	* @brief Constructor por parámetros
 	*/
-	Cola(const Cola &c);
+	Cola(stack<T> elementos, stack<T> mayores);
+
 	/*
-	@brief devuelve el máximo introducido hasta el momento
-	@return maximo
-	*/	
-	T  maximo();
-	/*
-	@brief devuelve el numero de elementos
-	@return numero elementos
+	* @brief Constructor por copia
+	* @param La cola de la que se hace la copia. No se modifica
 	*/
-	int num_elementos();
+	Cola(const Cola& c);
+
 	/*
-	@brief devuelve el elemento al frente de la cola
-	@return elemento al frente de la cola
+	* @brief Insertar un elemento en la cola
+	* @param El elemento a insertar
 	*/
-	T frente();
+	void poner(const T& elemento);
+
 	/*
-	@brief inserta un elemento en la cola
-	*/
-	void poner();
-	/*.
-	@brief elimina un elemento de la cola
+	* @brief Eliminar elemento de la cola. Elimina el elemento que acaba de entrar
 	*/
 	void quitar();
+
 	/*
-	@brief devuelve un booleano que indica si la cola está vacía
-	@return true si esta vacía y false en caso contrario
+	* @brief Devuelve el elemento del frente, el primero en entrar
+	* @return El elemento
+	*/
+	T& frente();
+
+	/*
+	* @brief Devuelve el máximo actual en la cola
+	* @return El máximo de la cola
+	*/
+	T& maximo();
+ 
+	/*
+	* @brief Comprueba si la cola 
+	* @return Devuelve true si está vacía, false si no lo está
 	*/
 	bool vacia();
 
+	/*
+	* @brief Devuelve el número de elementos que contiene la cola
+	* @return Número de elementos de la cola
+	*/
+	int num_elementos();
 };
+
+#include "Cola_max_pila.cpp"
+#endif

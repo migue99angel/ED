@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Cola_max_vd.h"
+#include "Cola_max.h"
 
 using namespace std;
 

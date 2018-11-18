@@ -13,9 +13,12 @@ using namespace std;
 template <class T>
 class Cola{
 private:
+	/*
+	* TDA Cola_max_vd
+	*/
 	vector<T> elementos;
 	vector<T> mayor;
-        T anterior;
+        int pos;
 	/*
 	@brief Devuelve el vector de elementos
 	@return el elemento
@@ -65,10 +68,7 @@ public:
 	@return true si esta vacía y false en caso contrario
 	*/
 	bool vacia();
-        /*
-         @brief Actualiza el vector de mayores
-        */
-        void actualizaMayores();
+
 };
 #include "Cola_max_vd.cpp"
 #endif
