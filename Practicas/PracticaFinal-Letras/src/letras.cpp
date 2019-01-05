@@ -43,9 +43,10 @@ int main(int argc, char const *argv[])
         BolsaLetras bolsa;
         int cantidad = strtol(argv[3], NULL, 10);
         
-        bolsa = conjunto.generarLetrasJuego(cantidad);
+        
         string sol;
         bool stop=false;
+        bool imposible=false;
         char continuar;
         while(!stop){
             cout<<"__________________________________________________________________________________________________\n"<<endl;
@@ -56,23 +57,69 @@ int main(int argc, char const *argv[])
             }
 
             cout<<"Generando las letras para la partida..."<<endl;
+            bolsa = conjunto.generarLetrasJuego(cantidad);
             cout<<"Las letras son: ";
             
             bolsa.mostrarLetras(  );
+            lista_palabras soluciones = lista.generarSoluciones(bolsa);
+
+            if(soluciones.size()!=0){
 
             cout<<"¿Sabes alguna solución?: "; 
             cin>>sol;
 
-            cout<<sol<<"\t Puntuación:  "<<conjunto.obtenerRanking(sol,(char) argv[4][0])<<endl<<endl;
-            cout<<"Mis soluciones son: "<<endl;
+            if(!soluciones.Esta(sol)){
+                char seguir;
+                cout<<"La solución introducida no es válida\n";
+                cout<<"¿Quieres seguir intentandolo? en caso afirmativo introduce S o s, cualquier otra letra para ver las soluciones: ";
+                cin>>seguir;
+                bool posible=false;
 
-            lista_palabras soluciones = lista.generarSoluciones(bolsa);
+                if (seguir=='S' || seguir =='s'){
+
+                while(posible == false){
+                    cout<<"¿Sabes alguna solución?: "; 
+                    cin>>sol;
+
+                    if(soluciones.Esta(sol))
+                        posible=true;
+                    else{
+                        cout<<"La solución introducida no es válida\n";
+                        cout<<"¿Quieres seguir intentandolo? en caso afirmativo introduce S o s, cualquier otra letra para ver las soluciones: ";
+                        cin>>seguir;
+                        if(seguir != 'S' && seguir != 's'){
+                            posible=true;
+                            }
+                        }    
+
+                    }
+                }
+            }
+
+
+            if(soluciones.Esta(sol)){
+                cout<<"¡La solución introducida es correcta!\n";
+                cout<<sol<<"\t Puntuación:  "<<conjunto.obtenerRanking(sol,(char) argv[4][0])<<endl<<endl;
+            }
+
+            
+            cout<<"Mis soluciones son: "<<endl;
+            /*AQUI SOLO MUESTRO LAS SOLUCIONES MÁS LARGAS O CON MAYOR PUNTUACIÓN PERO BASTARIA CON QUITAR LA SIGUIENTE LINEA PARA MOSTRAR TODAS LAS SOLUCIONES QUE SE PUEDEN FORMAR CON LAS LETRAS GENERADAS*/
+            soluciones = soluciones.mejoresSoluciones(argv[4][0],conjunto);
+            
             lista_palabras::const_iterator itr;
 
             for(itr = soluciones.begin(); itr != soluciones.end(); ++itr)
                 cout<<*itr<<"\t Puntuación:  "<<conjunto.obtenerRanking(*itr,(char) argv[4][0])<<endl;
 
+            }
+            else{    
+                cout<<"Es imposible formar palabras con la bolsa de letras generada\n";
+                cout<<"Generando una nueva bolsa de letras...\n";
+                imposible=true;
+            }
 
+            if(!imposible){
             cout<<"¿Te apetece otra ronda?"<<endl;
             cout<<"Introduce S o s para seguir jugando, en caso contrario introduce cualquier otra letra para salir: ";
             cin>>continuar;
@@ -81,7 +128,8 @@ int main(int argc, char const *argv[])
                 stop=true;
             else
                 cout<<"¡Vamos a por otra ronda!"<<endl;    
-
+            }
+            imposible=false;
         }
 
     }

@@ -23,7 +23,6 @@ void BolsaLetras::insertar(const letra &l){
 
 void BolsaLetras::mostrarLetras(){
 
-    cout<<"Mostrando bolsa de "<<bolsa.size()<<" letras ..."<<endl;
     for(unsigned i=0;i<this->bolsa.size();i++){
         cout<<this->bolsa[i]<<"\t";
     }

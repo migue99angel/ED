@@ -4,6 +4,7 @@
 #include <set>
 #include <string.h>
 #include "bolsa_letras.h"
+#include "conjunto_letras.h"
 using namespace std;
 
 class lista_palabras{
@@ -34,6 +35,12 @@ class lista_palabras{
     @return Soluciones posibles
     */
     lista_palabras generarSoluciones(const BolsaLetras &bolsa);
+    /*
+    @brief genera una lista_palabras con las mejores soluciones
+    @param Modo de juego
+    @return lista_palabra con soluciones
+    */
+    lista_palabras mejoresSoluciones(char modo, Conjunto_letras &c);
     /**
     @brief Lee de un flujo de entrada un lista_palabras
     @param is flujo de entrada

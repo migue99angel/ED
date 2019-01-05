@@ -27,16 +27,16 @@ int main(int argc, char const *argv[])
     cout<<"Generada con éxito. "<<endl;
     bolsa.mostrarLetras();
 
-//    cout<<"Generando una bolsa de 5 letras aleatorias....\n";
-//    bolsa=conjunto.generarLetrasJuego(5);;
-//    cout<<"Generada con éxito. "<<endl;
-//    bolsa.mostrarLetras();
-//
-//    cout<<"Generando otra bolsa de 8 letras aleatorias....\n";
-//    bolsa=conjunto.generarLetrasJuego(8);
-//    cout<<"Generada con éxito. "<<endl;
-//    bolsa.mostrarLetras();
-//
+    cout<<"Generando una bolsa de 5 letras aleatorias....\n";
+    bolsa=conjunto.generarLetrasJuego(5);;
+    cout<<"Generada con éxito. "<<endl;
+    bolsa.mostrarLetras();
+
+    cout<<"Generando otra bolsa de 8 letras aleatorias....\n";
+    bolsa=conjunto.generarLetrasJuego(8);
+    cout<<"Generada con éxito. "<<endl;
+    bolsa.mostrarLetras();
+
 
     cout<<"\nFIN DEL TEST"<<endl;
 

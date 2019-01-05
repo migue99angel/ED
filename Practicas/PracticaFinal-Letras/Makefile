@@ -29,6 +29,15 @@ $(BIN)/letras: $(OBJ)/letras.o $(LIB)/libletras.a
 $(OBJ)/letras.o : $(SRC)/letras.cpp
 	$(CXX) $(CPPFLAGS)  -o $(OBJ)/letras.o $(SRC)/letras.cpp 
 
+#***************** cantidad_de_letras *************************************	
+cantidad_de_letras: $(BIN)/cantidad_de_letras			
+
+$(BIN)/cantidad_de_letras: $(OBJ)/cantidad_de_letras.o $(LIB)/libletras.a
+	$(CXX) -o $(BIN)/cantidad_de_letras $(OBJ)/cantidad_de_letras.o -L$(LIB) -lletras
+
+$(OBJ)/cantidad_de_letras.o : $(SRC)/cantidad_de_letras.cpp
+	$(CXX) $(CPPFLAGS)  -o $(OBJ)/cantidad_de_letras.o $(SRC)/cantidad_de_letras.cpp 
+
 #************* testbolsa_letras *****************************
 
 testbolsa_letras: $(BIN)/testbolsa_letras
@@ -68,6 +77,9 @@ documentacion:
 # **** Ejecutar ****
 exec_lista: testlista_palabras
 	./$(BIN)/testlista_palabras ./datos/spanish.txt
+
+exec_cantidad: cantidad_de_letras
+	./$(BIN)/cantidad_de_letras	datos/spanish.txt datos/letras.txt datos/salida.txt
 
 exec_letras_puntos: letras
 	./$(BIN)/letras datos/spanish.txt datos/letras.txt 8 P

@@ -6,6 +6,7 @@
 #include <algorithm>
 
 
+
 using namespace std;
 
 Conjunto_letras::Conjunto_letras(){
@@ -25,13 +26,11 @@ int Conjunto_letras::obtenerRanking(string sol, char modo){
     }
 
     if(modo == 'P' || defecto ){
-        bool salir=false;
         for(unsigned i=0;i<sol.size();i++){
-            for(Conjunto_letras::const_iterator itr = Conjunto_letras::begin(); itr != Conjunto_letras::end() && !salir; itr++){
-                if(toupper(sol[i]) == itr->getCaracter()){
+            for(Conjunto_letras::const_iterator itr = Conjunto_letras::begin(); itr != Conjunto_letras::end(); itr++){
+                if(toupper(sol[i]) == itr->getCaracter())
                     puntuacion += itr->getPuntuacion();
-                    salir=true;
-                }
+                
             }
         }
 
@@ -40,32 +39,35 @@ int Conjunto_letras::obtenerRanking(string sol, char modo){
     }
 
     return puntuacion;
+
 }
+
+
 
  BolsaLetras  Conjunto_letras::generarLetrasJuego(int cantidad){
 
     BolsaLetras generada;
-
+    srand(time(NULL));
     int repeticiones[conjunto.size()] = {0};
-    int aniadidos=0, random;
+    int aniadidos=0, aleatorio;
 
     while(aniadidos < cantidad){
         Conjunto_letras::iterator itr = conjunto.begin();
-
-        srand(time(NULL));
-        random =rand() % (conjunto.size()-1);
+ 
+        
+        aleatorio = rand() % (conjunto.size()-1);
 
         int x=0;
-        while(x<random){
+        while(x<aleatorio){
             ++itr;
             ++x;
         }
 
-        repeticiones[random]++;
-        if(repeticiones[random] <= itr->getRepeticiones())
+        repeticiones[aleatorio]++;
+        if(repeticiones[aleatorio] <= itr->getRepeticiones()){
             generada.insertar(*itr);
-
-        aniadidos++;
+            aniadidos++;
+        }
     }
     
     return generada;

@@ -26,6 +26,7 @@ int main(int argc, char const *argv[]){
 
     cout<<"Leida la lista_palabras..."<<endl;
     cout<<D;
+    cout<<"Tiene un total de "<<D.size()<<" elementos\n";
 
     unsigned longitud;
     cout<<"Dime la longitud de las palabras que quieres ver: ";
