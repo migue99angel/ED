@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Letras: Fichero Fuente include/conjunto_letras.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Letras
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Buscar');
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('conjunto__letras_8h_source.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">conjunto_letras.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __conjunto_letras_h__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __conjunto_letras_h__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;letra.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;bolsa_letras.h&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classOrden.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOrden.html">Orden</a>{</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">bool</span> operator () (<span class="keyword">const</span> <a class="code" href="classletra.html">letra</a> &amp;l1, <span class="keyword">const</span> <a class="code" href="classletra.html">letra</a> &amp;l2){</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">return</span> l1.<a class="code" href="classletra.html#adb09c0e08f2a0a8eb8ad97c68dae3fff">getCaracter</a>() &lt; l2.<a class="code" href="classletra.html#adb09c0e08f2a0a8eb8ad97c68dae3fff">getCaracter</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div><div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classConjunto__letras.html">   48</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConjunto__letras.html">Conjunto_letras</a>{</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    set&lt;letra,Orden&gt; conjunto;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classConjunto__letras.html">Conjunto_letras</a>();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> insertar(<a class="code" href="classletra.html">letra</a> l);</div><div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a31c9f3f76db11098afcff3d3dcb0da08">   64</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classConjunto__letras.html#a31c9f3f76db11098afcff3d3dcb0da08">size</a>()<span class="keyword"> const</span>{<span class="keywordflow">return</span> this-&gt;conjunto.size();}</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> obtenerRanking(<span class="keywordtype">string</span> solucion,<span class="keywordtype">char</span> modo);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classBolsaLetras.html">BolsaLetras</a>  generarLetrasJuego(<span class="keywordtype">int</span> cantidad);</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">friend</span> istream &amp; operator&gt;&gt;(istream &amp; is, <a class="code" href="classConjunto__letras.html">Conjunto_letras</a> &amp;L);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">friend</span> ostream &amp; operator&lt;&lt;(ostream &amp; os, <span class="keyword">const</span> <a class="code" href="classConjunto__letras.html">Conjunto_letras</a> &amp;L);</div><div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a1bdd83056e1eec7cf85ea9c2a3639418">   94</a></span>&#160;        <span class="keyword">typedef</span> set&lt;letra,Orden&gt;::iterator <a class="code" href="classConjunto__letras.html#a1bdd83056e1eec7cf85ea9c2a3639418">iterator</a>;</div><div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a81456e3df3fe4ff118f1fdb28999670b">   98</a></span>&#160;        <span class="keyword">typedef</span> set&lt;letra,Orden&gt;::const_iterator <a class="code" href="classConjunto__letras.html#a81456e3df3fe4ff118f1fdb28999670b">const_iterator</a>;</div><div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a233a0b1abb5dd310d72cf02b7d07e814">  103</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="classConjunto__letras.html#a1bdd83056e1eec7cf85ea9c2a3639418">Conjunto_letras::iterator</a> <a class="code" href="classConjunto__letras.html#a233a0b1abb5dd310d72cf02b7d07e814">begin</a>(){<span class="keywordflow">return</span> this-&gt;conjunto.begin();}</div><div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#af4b3e37f9581f75103e48b383cfc47dd">  108</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="classConjunto__letras.html#a1bdd83056e1eec7cf85ea9c2a3639418">Conjunto_letras::iterator</a> <a class="code" href="classConjunto__letras.html#af4b3e37f9581f75103e48b383cfc47dd">end</a>() {<span class="keywordflow">return</span> this-&gt;conjunto.end();}</div><div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a2f2509cb15bfcb129cc0008e11ccb41b">  113</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="classConjunto__letras.html#a81456e3df3fe4ff118f1fdb28999670b">Conjunto_letras::const_iterator</a> <a class="code" href="classConjunto__letras.html#a2f2509cb15bfcb129cc0008e11ccb41b">begin</a>()<span class="keyword"> const</span>{<span class="keywordflow">return</span> this-&gt;conjunto.cbegin();};</div><div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classConjunto__letras.html#a4f7b7f357db70cb42ece4f01cb9430f2">  118</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="classConjunto__letras.html#a81456e3df3fe4ff118f1fdb28999670b">Conjunto_letras::const_iterator</a> <a class="code" href="classConjunto__letras.html#a4f7b7f357db70cb42ece4f01cb9430f2">end</a>()<span class="keyword"> const</span>{<span class="keywordflow">return</span> this-&gt;conjunto.cend();};</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;};</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="classBolsaLetras_html"><div class="ttname"><a href="classBolsaLetras.html">BolsaLetras</a></div><div class="ttdoc">T.D.A BolsaLetras. </div><div class="ttdef"><b>Definition:</b> <a href="bolsa__letras_8h_source.html#l00027">bolsa_letras.h:27</a></div></div>
+<div class="ttc" id="classConjunto__letras_html"><div class="ttname"><a href="classConjunto__letras.html">Conjunto_letras</a></div><div class="ttdoc">T.D.A Conjunto_letras. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00048">conjunto_letras.h:48</a></div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="classletra_html"><div class="ttname"><a href="classletra.html">letra</a></div><div class="ttdoc">T.D.A letra. </div><div class="ttdef"><b>Definition:</b> <a href="letra_8h_source.html#l00026">letra.h:26</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a1bdd83056e1eec7cf85ea9c2a3639418"><div class="ttname"><a href="classConjunto__letras.html#a1bdd83056e1eec7cf85ea9c2a3639418">Conjunto_letras::iterator</a></div><div class="ttdeci">set&lt; letra, Orden &gt;::iterator iterator</div><div class="ttdoc">Iterador para recorrer la lista_palabras, puede modificarlo. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00094">conjunto_letras.h:94</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a4f7b7f357db70cb42ece4f01cb9430f2"><div class="ttname"><a href="classConjunto__letras.html#a4f7b7f357db70cb42ece4f01cb9430f2">Conjunto_letras::end</a></div><div class="ttdeci">Conjunto_letras::const_iterator end() const</div><div class="ttdoc">Devuelve el valor del iterador correspondiente al final del set. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00118">conjunto_letras.h:118</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a31c9f3f76db11098afcff3d3dcb0da08"><div class="ttname"><a href="classConjunto__letras.html#a31c9f3f76db11098afcff3d3dcb0da08">Conjunto_letras::size</a></div><div class="ttdeci">int size() const</div><div class="ttdoc">Devuelve el tamaño del contenedor. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00064">conjunto_letras.h:64</a></div></div>
+<div class="ttc" id="classOrden_html"><div class="ttname"><a href="classOrden.html">Orden</a></div><div class="ttdoc">Práctica final para la asignatura de Estructura de Datos. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00025">conjunto_letras.h:25</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a233a0b1abb5dd310d72cf02b7d07e814"><div class="ttname"><a href="classConjunto__letras.html#a233a0b1abb5dd310d72cf02b7d07e814">Conjunto_letras::begin</a></div><div class="ttdeci">Conjunto_letras::iterator begin()</div><div class="ttdoc">Devuelve el valor del iterador correspondiente al principio del set, puede modificar el set...</div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00103">conjunto_letras.h:103</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a81456e3df3fe4ff118f1fdb28999670b"><div class="ttname"><a href="classConjunto__letras.html#a81456e3df3fe4ff118f1fdb28999670b">Conjunto_letras::const_iterator</a></div><div class="ttdeci">set&lt; letra, Orden &gt;::const_iterator const_iterator</div><div class="ttdoc">Iterador para recorrer la lista_palabras. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00098">conjunto_letras.h:98</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_a2f2509cb15bfcb129cc0008e11ccb41b"><div class="ttname"><a href="classConjunto__letras.html#a2f2509cb15bfcb129cc0008e11ccb41b">Conjunto_letras::begin</a></div><div class="ttdeci">Conjunto_letras::const_iterator begin() const</div><div class="ttdoc">Devuelve el valor del iterador correspondiente al principio del set. </div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00113">conjunto_letras.h:113</a></div></div>
+<div class="ttc" id="classConjunto__letras_html_af4b3e37f9581f75103e48b383cfc47dd"><div class="ttname"><a href="classConjunto__letras.html#af4b3e37f9581f75103e48b383cfc47dd">Conjunto_letras::end</a></div><div class="ttdeci">Conjunto_letras::iterator end()</div><div class="ttdoc">Devuelve el valor del iterador correspondiente al final del set, puede modificar el set...</div><div class="ttdef"><b>Definition:</b> <a href="conjunto__letras_8h_source.html#l00108">conjunto_letras.h:108</a></div></div>
+<div class="ttc" id="classletra_html_adb09c0e08f2a0a8eb8ad97c68dae3fff"><div class="ttname"><a href="classletra.html#adb09c0e08f2a0a8eb8ad97c68dae3fff">letra::getCaracter</a></div><div class="ttdeci">char getCaracter() const</div><div class="ttdoc">Consultor básico del caracter. </div><div class="ttdef"><b>Definition:</b> <a href="letra_8h_source.html#l00056">letra.h:56</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<hr>
+<small>ETS Ingeniería Informática y Telecomunicaciones. Universidad de Granada.
+</small>
